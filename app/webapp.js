@@ -18,7 +18,7 @@ app.post('/', function(req, res) {
 });
 
 app.get('/', function (req, res) {
-  res.send('Syntax: http://<address>/query=<some term>&webhook=<some webhook>');
+  res.status(200).send('Syntax: http://<address>/query=<some term>&webhook=<some webhook>');
 });
 
 app.use(function(req, res, next){

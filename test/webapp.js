@@ -53,4 +53,14 @@ describe('An HTTP Server', function () {
       done();
     })
   })
+
+  it('should 404', function(done) {
+    request(this.uri + 'testing', function(err, res, body) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 404);
+      done();
+    })
+  })
 });
