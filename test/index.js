@@ -1,4 +1,4 @@
-var assert = require('assert');
+var assert = require('chai').assert;
 var request = require('request');
 
 describe('An HTTP Server', function () {
