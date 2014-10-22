@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var winston = require('winston');
 var app = express();
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -10,7 +11,7 @@ app.post('/', function(req, res) {
         webhook = req.body.webhook;
     if (typeof query !== 'undefined' && query &&
       typeof webhook !== 'undefined' && webhook) {
-      console.log('you posted query: '+query+', and webhook:'+webhook);
+      winston.info('you posted query: '+query+', and webhook:'+webhook);
       res.status(201).send('query ('+query+') is running and will respond to webhook ('+webhook+') if watson hears you');
     } else {
       res.status(412).send('query and/or webhook parameters are missing');
