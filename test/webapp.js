@@ -19,7 +19,17 @@ describe('An HTTP Server', function () {
       }
 
       assert.equal(resp.statusCode, 200);
-      assert.equal(body, 'hello');
+      assert.equal(body, 'Syntax: http://<address>/query=<some term>&webhook=<some webhook>');
+      done();
+    })
+  })
+
+  it('should make a post', function(done) {
+    request.post(this.uri, {form: {query:'query values', webhook:'webhook values'}}, function(err, res, body) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 201);
       done();
     })
   })
