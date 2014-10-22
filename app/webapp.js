@@ -24,7 +24,7 @@ app.post('/', function(req, res) {
          if( !err ) {
            winston.info( job.id )
          } else {
-           winston.error( 'Job for query: ' + query ' and webhook: ' + webhook ' failed: ' + err )
+           winston.error( 'Job for query: ' + query + ' and webhook: ' + webhook + ' failed: ' + err )
          }
       });
     } else {
