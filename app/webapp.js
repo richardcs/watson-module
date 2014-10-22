@@ -10,8 +10,7 @@ app.use( bodyParser.urlencoded({ extended: false }) ); // to support URL-encoded
 app.post('/', function(req, res) {
     var query = req.body.query,
         webhook = req.body.webhook;
-    if (typeof query !== 'undefined' && query &&
-      typeof webhook !== 'undefined' && webhook) {
+    if (query && webhook) {
       winston.info('you posted query: '+query+', and webhook:'+webhook);
       res.status(201).send('query ('+query+') is running and will respond to webhook ('+webhook+') if watson hears you');
     } else {
