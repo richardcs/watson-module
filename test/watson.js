@@ -28,7 +28,6 @@ describe('A service that pulls { webhook: url, query: query } objects off a queu
     it('should POST a response to a webhook', function(done) {
         watson.post(this.uri, { message: 'a post body' }, function(err, res, body){
             console.log("err", err);
-            console.log("res", res);
             assert.equal(res.statusCode, 200)
             done();
         });
