@@ -24,12 +24,32 @@ describe('An HTTP Server', function () {
     })
   })
 
-  it('should make a post', function(done) {
+  it('should accept a valid post', function(done) {
     request.post(this.uri, {form: {query:'query values', webhook:'webhook values'}}, function(err, res, body) {
       if (err) {
         throw err;
       }
       assert.equal(res.statusCode, 201);
+      done();
+    })
+  })
+
+  it('should reject a post without a query', function(done) {
+    request.post(this.uri, {form: {webhook:'webhook values'}}, function(err, res, body) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 412);
+      done();
+    })
+  })
+
+  it('should reject a post without a webhook', function(done) {
+    request.post(this.uri, {form: {query:'query values'}}, function(err, res, body) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 412);
       done();
     })
   })
