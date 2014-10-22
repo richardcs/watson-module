@@ -11,9 +11,9 @@ app.post('/', function(req, res) {
     if (typeof query !== 'undefined' && query &&
       typeof webhook !== 'undefined' && webhook) {
       console.log('you posted query: '+query+', and webhook:'+webhook);
-      res.send(201);
+      res.status(201).send('query ('+query+') is running and will respond to webhook ('+webhook+') if watson hears you');
     } else {
-      res.send(412, 'query and/or webhook parameters are missing');
+      res.status(412).send('query and/or webhook parameters are missing');
     }
 });
 
@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
 });
 
 app.use(function(req, res, next){
-  res.send(404, 'Sorry cant find that!');
+  res.status(404).send('Sorry cant find that!');
 });
 
 module.exports = app;
