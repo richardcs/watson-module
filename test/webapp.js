@@ -1,3 +1,4 @@
+var winston = require('winston');
 var assert = require('chai').assert;
 var request = require('request');
 var freeport = require('freeport');
@@ -9,6 +10,7 @@ describe('An HTTP Server', function () {
     freeport(function(err, port) {
       this.uri = 'http://localhost:' + port;
       this.server = webapp.listen(port, done);
+      winston.info(this.uri);
     }.bind(this));
   });
 
@@ -50,6 +52,17 @@ describe('An HTTP Server', function () {
         throw err;
       }
       assert.equal(res.statusCode, 412);
+      done();
+    })
+  })
+
+  it('should 404', function(done) {
+    var uri = this.uri + '/testing';
+    request(uri, function(err, res, body) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 404);
       done();
     })
   })
