@@ -1,9 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var winston = require('winston');
+var config = require('config');
 var kue = require('kue');
 
 var jobs = kue.createQueue(); // create jobs queue
+var queueName = config.get('queue.name');
 var app = express(); // setup the web server
 
 app.use( bodyParser.json() );                          // to support JSON-encoded bodies
@@ -16,7 +18,7 @@ app.post('/', function(req, res) {
     if (query && webhook) {
       winston.info('you posted query: '+query+', and webhook:'+webhook);
       res.status(201).send('query ('+query+') is running and will respond to webhook ('+webhook+') if watson hears you');
-      var job = jobs.create('winston', {
+      var job = jobs.create(queueName, {
           title: query
         , query: query
         , webhook: webhook
