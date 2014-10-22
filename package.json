@@ -1,0 +1,21 @@
+{
+  "name": "watson-module",
+  "version": "0.0.1",
+  "description": "Richard, Steve, and Matt node training",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/richardcs/watson-module.git"
+  },
+  "author": "Richard, Steve, and Matt",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/richardcs/watson-module/issues"
+  },
+  "dependencies": {
+    "express": "~4.9.8"
+  }
+}
