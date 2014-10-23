@@ -1,8 +1,0 @@
-{
-  "webapp": {
-    "port" : 3000
-  },
-  "queue": {
-    "name" : "watson"
-  }
-}
