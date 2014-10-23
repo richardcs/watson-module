@@ -19,14 +19,18 @@ describe('A service that pulls { webhook: url, query: query } objects off a queu
     });
 
     it('should make a query to a webservice and return a response', function(done) {
-        var response = watson.query("What is the temperature in Gnome, Alaska");
-        console.log(response);
-        assert(response);
-        done();
+        var response = watson.query("What is the treatment for Aplastic Anemia?", function(err, res) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(res);
+                done();
+            }
+        });
     });
 
     it('should POST a response to a webhook', function(done) {
-        watson.post(this.uri, { message: 'a post body' }, function(err, res, body){
+        watson.post(this.uri, { message: 'a post body' }, function(err, res, body) {
             console.log("err", err);
             assert.equal(res.statusCode, 200)
             done();

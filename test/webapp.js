@@ -6,8 +6,9 @@ var webapp = require('../app/webapp');
 var config = require('config');
 var kue = require('kue');
 
-var jobs = kue.createQueue(); // create jobs queue
-var queueName = config.get('queue.name');
+var jobs = kue.createQueue({ prefix: 'q', redis: config.get('kue') });
+    
+var queueName = config.get('queue');
 
 describe('An HTTP Server', function () {
 
@@ -34,7 +35,7 @@ describe('An HTTP Server', function () {
   })
 
   it('should accept a valid post', function(done) {
-    var queryValue = 'my query value';
+    var queryValue = 'What is Herpes?';
     var webhookValue = 'my webhook value';
     request.post(this.uri, {form: {query: queryValue, webhook: webhookValue}}, function(err, res, body) {
       if (err) {

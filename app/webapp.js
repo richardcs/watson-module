@@ -4,8 +4,8 @@ var winston = require('winston');
 var config = require('config');
 var kue = require('kue');
 
-var jobs = kue.createQueue(); // create jobs queue
-var queueName = config.get('queue.name');
+var jobs = kue.createQueue({ prefix: 'q', redis: config.get('kue') }); // create jobs queue
+var queueName = config.get('queue');
 var app = express(); // setup the web server
 
 app.use( bodyParser.json() );                          // to support JSON-encoded bodies
