@@ -16,7 +16,7 @@ if (process.env.REDISTOGO_URL) {
     var parsed = require('url').parse(process.env.REDISTOGO_URL);
     exports.kue = {
         port: parsed.port,
-        auth: parsed.auth,
+        auth: parsed.auth.split(":")[1],
         host: parsed.hostname
     };
 } else {
