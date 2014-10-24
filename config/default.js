@@ -7,8 +7,8 @@ exports.redis = {
 };
 
 exports.watson = {
-    username: process.env.WATSON_USERNAME || "2b458e07-6be0-412e-aa40-0f7f4c901d07",
-    password: process.env.WATSON_PASSWORD || "7bRCI7S3K6nN",
+    username: process.env.WATSON_USERNAME || "35211d6f-7d28-4ea5-9283-ce5efb1b51c4",
+    password: process.env.WATSON_PASSWORD || "2UKUVMprDIOh",
     endpoint: process.env.WATSON_ENDPOINT || "https://gateway.watsonplatform.net:443/qagw/service"
 };
 
