@@ -5,7 +5,7 @@ exports.redis = {
     host: "localhost",
     port: 6379
 };
-    
+
 exports.watson = {
     username: process.env.WATSON_USERNAME || "richard.levenberg@connectsolutions.com",
     password: process.env.WATSON_PASSWORD || "gDs6vK4qX5",
@@ -24,4 +24,4 @@ if (process.env.REDISTOGO_URL) {
         port: process.env.KUE_PORT || 6379,
         host: process.env.KUE_HOST || "localhost"
     };
-}   
+}

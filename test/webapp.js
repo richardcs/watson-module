@@ -7,7 +7,7 @@ var config = require('config');
 var kue = require('kue');
 
 var jobs = kue.createQueue({ prefix: 'q', redis: config.get('kue') });
-    
+
 var queueName = config.get('queue');
 
 describe('An HTTP Server', function () {

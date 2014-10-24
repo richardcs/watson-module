@@ -28,7 +28,7 @@ if (process.env.VCAP_SERVICES) {
   var services = JSON.parse(process.env.VCAP_SERVICES);
   //service name, check the VCAP_SERVICES in bluemix to get the name of the services you have
   var service_name = 'question_and_answer';
-  
+
   if (services[service_name]) {
     var svc = services[service_name][0].credentials;
     service_url = svc.url;
@@ -49,7 +49,7 @@ console.log('service_password = ' + new Array(service_password.length).join("X")
 var auth = "Basic " + new Buffer(service_username + ":" + service_password).toString("base64");
 
 function askQuestion(question, callback) {
-  // Select healthcare as endpoint 
+  // Select healthcare as endpoint
   var parts = url.parse(service_url +'/v1/question/1');
   // create the request options to POST our question to Watson
   var options = { host: parts.hostname,
@@ -71,7 +71,7 @@ function askQuestion(question, callback) {
     result.on('data', function(chunk) {
       response_string += chunk;
     });
-    
+
     result.on('end', function() {
         var answers_pipeline = JSON.parse(response_string), answers = answers_pipeline[0];
         console.log('w-impl', answers_pipeline);
@@ -88,7 +88,7 @@ function askQuestion(question, callback) {
   // create the question to Watson
   var questionData = {
     'question': {
-      'evidenceRequest': { 
+      'evidenceRequest': {
         'items': 5 // the number of anwers
       },
       'questionText': question // the question
