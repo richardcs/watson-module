@@ -6,7 +6,7 @@ var qanda = require('./watson-implementation');
 
 var queue = kue.createQueue({ prefix: 'q', redis: config.get('kue') });
 
-queue.process(config.get('queue'), function(job) {
+queue.process(config.get('queue'), function(job, done) {
     var data = job.data;
     winston.info(data.webhook);
     winston.info(data.query);
@@ -18,6 +18,7 @@ queue.process(config.get('queue'), function(job) {
             });
         }
     });
+    done && done();
 });
 
 function query(query, callback) {
