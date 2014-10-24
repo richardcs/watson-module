@@ -76,7 +76,7 @@ function askQuestion(question, callback) {
     result.on('end', function() {
         var answers_pipeline = JSON.parse(response_string), answers = answers_pipeline[0];
         winston.info('w-impl', answers_pipeline);
-        callback(null, {'questionText': question, 'answers': answers});
+        callback(null, answers.question.evidencelist[0]);
     })
 
   });
@@ -90,7 +90,7 @@ function askQuestion(question, callback) {
   var questionData = {
     'question': {
       'evidenceRequest': {
-        'items': 5 // the number of anwers
+        'items': 1 // the number of anwers
       },
       'questionText': question // the question
     }
