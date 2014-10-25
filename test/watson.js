@@ -18,8 +18,8 @@ describe('A service that pulls { webhook: url, query: query } objects off a queu
                 console.log(err);
             } else {
                 console.log(res);
-                done();
             }
         });
+        done();
     });
 });
